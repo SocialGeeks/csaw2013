@@ -1,9 +1,11 @@
 # Reversing - Noobs First Firmware Mod - 500 Points
 
+## Challenge page  
+
 N00b firmware modder says: "My first u-boot mod, there might be errors :("  
 noobs-first-firmware-mod.tgz  
 
-_Notes:_  
+## Notes  
 
 	$ tar xvf noobs-first-firmware-mod.tgz  
 	u-boot-csaw/  

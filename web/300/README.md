@@ -1,6 +1,47 @@
 # Web - herpderper - 300 Points  
 
-herpderper.apk - https://ctf.isis.poly.edu/challenges/3217d989d9116b41c3f3147857c6bc90/e95bf8c53de92d436a39edd92b1da430/herpderper.apk  
+## Challenge page  
 
-_Note:_ this file is also in this repository  
+herpderper.apk  
+
+## Notes  
+
+	$ file herpderper.apk  
+	herpderper.apk: Java Jar file data (zip)  
+
+Looks like an [Android Package file](http://www.fileinfo.com/extension/apk).  
+
+herpderper.apk has been unzipped into herpderper.  
+
+	$ ls -R herpderper/  
+	herpderper:   
+	AndroidManifest.xml  classes.dex  META-INF  res  resources.arsc  
+
+	herpderper/META-INF:  
+	CERT.RSA  CERT.SF  MANIFEST.MF  
+
+	herpderper/res:  
+	drawable-hdpi  drawable-mdpi  drawable-xhdpi  drawable-xxhdpi  layout  menu  
+
+	herpderper/res/drawable-hdpi:  
+	ic_launcher.png  
+
+	herpderper/res/drawable-mdpi:  
+	ic_launcher.png  
+
+	herpderper/res/drawable-xhdpi:  
+	ic_launcher.png  
+
+	herpderper/res/drawable-xxhdpi:  
+	ic_launcher.png  
+
+	herpderper/res/layout:  
+	activity_auth.xml  
+
+	herpderper/res/menu:  
+	super_secret_authorization.xml   
+
+While running strings on resources.arsc, found this URL: https://webchal.isis.poly.edu/csaw.php
+
+Visting that URL gives you an error "please access the site using the mobile application".  My guess is that this could be faked with a UserAgent string.  
 

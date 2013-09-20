@@ -1,5 +1,7 @@
 # Web - Nevernote - 200 Points  
 
+## Challenge page  
+
 http://128.238.66.214  
 from: Nevernote Admin   
 to: challenger@ctf.isis.poly.edu  
@@ -11,5 +13,7 @@ Evil hackers have taken control of the Nevernote server and locked me out. While
 Thanks,  
 Nevernote Admin  
 
-_Notes:_ appears to be an XSS attack of some sort.  
+## Notes
+
+Appears to be an XSS attack of some sort.  
 

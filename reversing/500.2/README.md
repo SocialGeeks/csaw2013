@@ -1,11 +1,15 @@
 # Reversing - Impossible - 500 Points  
 
+## Challenge page  
+
 WTF, his hp is over 9000! Beat the game to get your key.  
 impossible.nds  
 
+## Hint  
+
 Hint for Impossible: Are you sure that's the full key?  
 
-_Notes:_  
+## Notes  
 
 	$ file impossible.nds  
 	impossible.nds: data  
