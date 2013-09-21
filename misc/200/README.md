@@ -21,3 +21,9 @@ When opening the file with feh, the following warnings were generated.
 * <tt>0xDEADBEEF</tt> ("dead beef") is frequently used to indicate a software crash or deadlock in embedded systems.  DEADBEEF was originally used to mark newly allocated areas of memory that had not yet been initialized -- when scanning a memory dump, it is easy to see the DEADBEEF.  It is used by IBM [[RS/6000]] systems, [[Mac OS]] on 32-bit [[PowerPC]] processors and the [[Commodore International|Commodore]] [[Amiga]] as a magic debug value. On [[Sun Microsystems]]' [[Solaris (operating system)|Solaris]], it marks freed kernel memory. On [[OpenVMS]] running on Alpha processors, DEAD_BEEF can be seen by pressing CTRL-T. The DEC Alpha SRM console has a background process that traps memory errors, identified by PS as "BeefEater waiting on 0xdeadbeef".<ref>{{cite web|url=http://www.catb.org/~esr/jargon/html/D/DEADBEEF.html |title=Jargon File entry for DEADBEEF |publisher=Catb.org |date= |accessdate=2009-10-01}}</ref>
 
 * The number 0xDEADBEEF is equal to the less recognizable decimal number 3735928559 (unsigned) or -559038737 (signed).
+
+used pngcheck to find the broken crc, recieved:
+
+    IMG_0707.png  CRC error in chunk IHDR (computed fcc410a8, expected c1d0b3e4)
+
+IMG_0707.fixdcrc.png contains the same image with the header crc fixed.
