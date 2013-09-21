@@ -17,3 +17,4 @@ Nevernote Admin
 
 Appears to be an XSS attack of some sort.  
 
+The value of enc= on the viewmessage.php page is a base 64 encoded string: raw byte data.
