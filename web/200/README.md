@@ -13,6 +13,10 @@ Evil hackers have taken control of the Nevernote server and locked me out. While
 Thanks,  
 Nevernote Admin  
 
+## Hint  
+
+Hint for Nevernote: Nevernote admin checks his links  
+
 ## Notes
 
 Appears to be an XSS attack of some sort.  
