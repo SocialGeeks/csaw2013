@@ -4,6 +4,11 @@
 
 herpderper.apk  
 
+## Hint
+
+Hint for herpderper: Simple web bugs are simple.  
+
+
 ## Notes  
 
 	$ file herpderper.apk  
