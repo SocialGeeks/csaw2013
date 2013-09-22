@@ -1,5 +1,4 @@
 <?php
-define("COOKIE_PATH", "cookies.txt");
 define("USERNAME", "1@1.1");
 define("PASSWORD", "t");
 
