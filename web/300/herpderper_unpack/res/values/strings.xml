@@ -17,5 +17,5 @@
     <string name="status_auth_pending">Authorization pending...</string>
     <string name="status_noauth">Not authorized</string>
     <string name="status_noauth_failed">Not authorized</string>
-    <string name="testURL">https://webchal.isis.poly.edu/csaw.php</string>
+    <string name="testURL">http://webchal.isis.poly.edu/csaw.php</string>
 </resources>
