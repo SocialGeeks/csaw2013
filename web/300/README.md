@@ -68,18 +68,13 @@ If you get errors than you'll have to make sure that aapt is in your PATH.
 
 Then run the above apktool command again to build.  This will place the new apk file in dist/herpderper.apk  Next you need to sign the jar file.
 
-
-You can then push the file to your virtual device to test.  
-
-https://developer.android.com/guide/topics/resources/menu-resource.html
-
 You have to sign the jar file when you are done.
-
-* http://www.haibane.org/node/13  
 
 	$ keytool -genkeypair -keyalg RSA -sigalg MD5withRSA -dname "c=US,cn=John Doe, o=Sun, st=California, l=Santa Clara" -keystore MyKeyStore  
 	$ jarsigner -keystore MyKeyStore -digestalg SHA1 -sigalg MD5withRSA dist/herpderper.apk mykey  
 
 ### Links
 
+* [Sign Jar file](* http://www.haibane.org/node/13)  
 * [Menu resources](https://developer.android.com/guide/topics/resources/menu-resource.html)  
+
