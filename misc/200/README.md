@@ -32,7 +32,7 @@ IMG_0707.fixdcrc.png contains the same image with the header crc fixed.
 
 pngcheck reveals a CRC error in the IHDR chunk and is able to fix it allowing you to see the image data.  This lets us pull up the image and see the image without any errors.  The photo is has a non-standard size ratio which looks like the image has been cropped.  Futhermore the hint image later published shows an arrow pointing to the bottom half of the image.  Everything suggesting that there is more to this image that isn't being shown.
 
-Among other things the IHDR chunk specifies the image's dimensions which most graphic software reads in and uses it to display that much of the image even though.  It's invalid according to the CRC so someone changed something.  It quickly became obvious that the photo was cropped in height so with this we can pull up the original (non crc corrected) image in a hex editor and take a look at the values specified in the IHDR.   
+Among other things the IHDR chunk specifies the image's dimensions which most graphic software reads in and uses it to display that much of the image even though there might be more to the image.  It's invalid according to the CRC so someone changed something.  It quickly became obvious that the photo was cropped in height so with this we can pull up the original (non crc corrected) image in a hex editor and take a look at the values specified in the IHDR chunk.   
 
 	00 00 00 0D 49 48 44 52 00 00 0C C0 00 00 06 91 08 06 00 00 00 C1 D0 B3 E4
 
