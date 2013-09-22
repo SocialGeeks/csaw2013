@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="ic_launcher" id="0x7f020000" />
+    <public type="layout" name="activity_auth" id="0x7f030000" />
+    <public type="string" name="action_forgot_password" id="0x7f040000" />
+    <public type="string" name="action_sign_in_register" id="0x7f040001" />
+    <public type="string" name="action_sign_in_short" id="0x7f040002" />
+    <public type="string" name="app_name" id="0x7f040003" />
+    <public type="string" name="error_field_required" id="0x7f040004" />
+    <public type="string" name="error_incorrect_password" id="0x7f040005" />
+    <public type="string" name="error_invalid_email" id="0x7f040006" />
+    <public type="string" name="error_invalid_password" id="0x7f040007" />
+    <public type="string" name="identity" id="0x7f040008" />
+    <public type="string" name="login_progress_signing_in" id="0x7f040009" />
+    <public type="string" name="msg_unknown" id="0x7f04000a" />
+    <public type="string" name="prompt_email" id="0x7f04000b" />
+    <public type="string" name="prompt_password" id="0x7f04000c" />
+    <public type="string" name="status_auth" id="0x7f04000d" />
+    <public type="string" name="status_auth_pending" id="0x7f04000e" />
+    <public type="string" name="status_noauth" id="0x7f04000f" />
+    <public type="string" name="status_noauth_failed" id="0x7f040010" />
+    <public type="string" name="testURL" id="0x7f040011" />
+    <public type="style" name="AppBaseTheme" id="0x7f050000" />
+    <public type="style" name="AppTheme" id="0x7f050001" />
+    <public type="style" name="LoginFormContainer" id="0x7f050002" />
+    <public type="menu" name="super_secret_authorization" id="0x7f060000" />
+    <public type="id" name="login_status" id="0x7f070000" />
+    <public type="id" name="login_status_message" id="0x7f070001" />
+    <public type="id" name="login_form" id="0x7f070002" />
+    <public type="id" name="email" id="0x7f070003" />
+    <public type="id" name="password" id="0x7f070004" />
+    <public type="id" name="login" id="0x7f070005" />
+    <public type="id" name="sign_in_button" id="0x7f070006" />
+    <public type="id" name="status_msg" id="0x7f070007" />
+    <public type="id" name="msg_msg" id="0x7f070008" />
+    <public type="id" name="action_forgot_password" id="0x7f070009" />
+</resources>
