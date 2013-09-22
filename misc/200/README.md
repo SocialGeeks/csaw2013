@@ -30,16 +30,16 @@ IMG_0707.fixdcrc.png contains the same image with the header crc fixed.
 
 ## Solution
 
-pngcheck reveals a CRC error in the IHDR chunk and is able to fix it allowing you to see the image data.  This lets us pull up the image and see the image without any errors.  The photo is has a non-standard size ratio which looks like the image has been cropped.  Futhermore the hint image later published shows an arrow pointing to the bottom half of the image.  Everything suggesting that there is more to this image that isn't being shown.
+pngcheck reveals a CRC error in the IHDR chunk and is able to fix it.  This lets us pull up the image and view it without any errors.  Looking at metadata the photo was taken from an iPhone but it has a non-standard size ratio so it looks like the image has been cropped.  As noted, opening in feh reveals that there is "Too much image data".  When try to convert or resave the file we notice it lose about 3MB of data.  Futhermore the hint image later published shows an arrow pointing to the bottom half of the image.  Everything suggesting that there is more to this image that isn't being shown.  It quickly became obvious that the photo was cropped in height.
 
-Among other things the IHDR chunk specifies the image's dimensions which most graphic software reads in and uses it to display that much of the image even though there might be more to the image.  It's invalid according to the CRC so someone changed something.  It quickly became obvious that the photo was cropped in height so with this we can pull up the original (non crc corrected) image in a hex editor and take a look at the values specified in the IHDR chunk.   
+Time to get dirty and pull up the file in a hex editor and look at the structure of the png file.  PNGs are made up of several chunks of data starting with the "IHDR" chunk.  Among other things the IHDR chunk specifies the image's dimensions which most graphic software reads in and uses it to display that much of the image and ignoring the rest of the extra data.  The thing is we know the IHDR is invalid according to the CRC check so someone changed something in the IHDR.  Looking at the values specified in the IHDR chunk we have:
 
 	00 00 00 0D 49 48 44 52 00 00 0C C0 00 00 06 91 08 06 00 00 00 C1 D0 B3 E4
 
-All chunks in a PNG file have the same basic struture.  The first 4 bytes is the length of the chunk.  The next 4 bytes is the chunk's type code.  In this case its IHDR.  It then has the chunk data and followed up with a 4 byte CRC. Breaking it down a bit we have... 
+All chunks in a PNG file have the same basic struture.  The first 4 bytes is the length of the chunk.  The next 4 bytes is the chunk's type code.  It then has the chunk's data and followed up with a 4 byte CRC. Breaking it down a bit we have... 
 
 	00 00 00 0D = 13 (size, hex to dec)
-	49 48 44 52 = "IHRD" (chunk type, hex to ascii)
+	49 48 44 52 = "IHDR" (chunk type, hex to ascii)
 	00 00 0C C0 00 00 06 91 08 06 00 00 00 (chunk data)
 	C1 D0 B3 E4 = CRC
  
@@ -56,12 +56,12 @@ A png's specifications for the IHDR chunk is the following:
  
 Breaking down the chunk data we have...
  
-	00 00 0C C0 = Width
-	00 00 06 91 = Height
+	00 00 0C C0 = Width (3264, hex to dec)
+	00 00 06 91 = Height (1681, hex to dec)
 	08 = Bit depth
 	06 = Color type
 	00 = Compression method
 	00 = Filter method
 	00 = Interlace method
 
-We want to tweak the height so all we have to do is adjust the hex values from <tt>00 00 06 91</tt>, which specifies an image height of 1681 px, to <tt>00 00 09 90</tt>, 2448 px, making the image 3264 x 2448, a standard 4:3 ratio coming from an iPhone.  This makes the CRC check valid again and viewing the image is full sized and contains the key.
+We want to tweak the height so all we have to do is adjust the hex values from <tt>00 00 06 91</tt> to <tt>00 00 09 90</tt>, setting a 2448 px height, making the image 3264 x 2448, a standard 4:3 ratio coming from an iPhone.  This makes the CRC check valid again and viewing the image is full sized and contains the key.
