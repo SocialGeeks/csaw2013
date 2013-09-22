@@ -48,5 +48,38 @@ herpderper.apk has been unzipped into herpderper.
 
 While running strings on resources.arsc, found this URL: https://webchal.isis.poly.edu/csaw.php
 
-Visting that URL gives you an error "please access the site using the mobile application".  My guess is that this could be faked with a UserAgent string.  
+Found apktool that allows you to uncompress the apk file.
 
+	$ java -jar apktool1.5.2/apktool.jar d herpderper.apk herpderper_unpack  
+
+After you make your changes to the android files you can use apktool to put it all back together again.  
+
+	$ cd herpderper_unpack  
+	$ java -jar ../apktool1.5.2/apktool.jar b  
+
+If you get errors than you'll have to make sure that aapt is in your PATH.  
+
+	$ find / -name aapt 2>/dev/null  
+	/opt/android-sdk/build-tools/18.1.0/aapt  
+	/opt/android-sdk/build-tools/18.0.1/aapt  
+	/opt/android-sdk/build-tools/17.0.0/aapt  
+
+	$ PATH=$PATH:/opt/android-sdk/build-tools/18.1.0
+
+Then run the above apktool command again to build.  This will place the new apk file in dist/herpderper.apk  Next you need to sign the jar file.
+
+
+You can then push the file to your virtual device to test.  
+
+https://developer.android.com/guide/topics/resources/menu-resource.html
+
+You have to sign the jar file when you are done.
+
+* http://www.haibane.org/node/13  
+
+	$ keytool -genkeypair -keyalg RSA -sigalg MD5withRSA -dname "c=US,cn=John Doe, o=Sun, st=California, l=Santa Clara" -keystore MyKeyStore  
+	$ jarsigner -keystore MyKeyStore -digestalg SHA1 -sigalg MD5withRSA dist/herpderper.apk mykey  
+
+### Links
+
+* [Menu resources](https://developer.android.com/guide/topics/resources/menu-resource.html)  
