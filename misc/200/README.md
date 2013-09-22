@@ -42,9 +42,9 @@ All chunks in a PNG file have the same basic struture.  The first 4 bytes is the
 	49 48 44 52 = "IHRD" (chunk type, hex to ascii)
 	00 00 0C C0 00 00 06 91 08 06 00 00 00 (chunk data)
 	C1 D0 B3 E4 = CRC
-
-	A png's specifications for the IHDR chunk is the following:
-
+ 
+A png's specifications for the IHDR chunk is the following:
+ 
 	The IHDR chunk must appear FIRST. It contains:
 	Width: 4 bytes
 	Height: 4 bytes
@@ -53,9 +53,9 @@ All chunks in a PNG file have the same basic struture.  The first 4 bytes is the
 	Compression method: 1 byte
 	Filter method: 1 byte
 	Interlace method: 1 byte
-
+ 
 Breaking down the chunk data we have...
-
+ 
 	00 00 0C C0 = Width
 	00 00 06 91 = Height
 	08 = Bit depth
