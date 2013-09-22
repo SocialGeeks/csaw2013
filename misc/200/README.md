@@ -14,7 +14,7 @@ When opening the file with feh, the following warnings were generated.
     libpng warning: IHDR: CRC error  
     libpng warning: IDAT: Too much image data  
 
-* Image opens fine in Photoshop CS6. A "fixed" version is <tt>IMG_0707__resaved.png</tt>... makes you wonder what was added to the file to make it semi-corrupted though.
+* Image opens fine in Photoshop CS6. A "fixed" version is <tt>IMG_0707_resaved.png</tt>... makes you wonder what was added to the file to make it semi-corrupted though.
 
 * Image shows deeeeeeaaaaaadbeeeeeeeeeed on a whiteboard emphasizing there are 6 e's and 6 a's in dead and 10 e's in beef.  Also has references to many subredits and other random (probably unrelated) notes.
 
@@ -36,7 +36,12 @@ Among other things the IHDR chunk specifies the image's dimensions which most gr
 
 	00 00 00 0D 49 48 44 52 00 00 0C C0 00 00 06 91 08 06 00 00 00 C1 D0 B3 E4
 
-All chunks in a PNG file have the same basic struture.  The first 4 bytes is the length of the chunk.  The next 4 bytes is the chunk's type code.  In this case its IHDR.  It then has the chunk data and is followed up with a 4 byte CRC.  
+All chunks in a PNG file have the same basic struture.  The first 4 bytes is the length of the chunk.  The next 4 bytes is the chunk's type code.  In this case its IHDR.  It then has the chunk data and followed up with a 4 byte CRC. Breaking it down a bit we have... 
+
+	00 00 00 0D = 13 (size, hex to dec)
+	49 48 44 52 = "IHRD" (chunk type, hex to ascii)
+	00 00 0C C0 00 00 06 91 08 06 00 00 00 (chunk data)
+	C1 D0 B3 E4 = CRC
 
 	A png's specifications for the IHDR chunk is the following:
 
@@ -49,4 +54,14 @@ All chunks in a PNG file have the same basic struture.  The first 4 bytes is the
 	Filter method: 1 byte
 	Interlace method: 1 byte
 
-We want to tweak the height so all we have to do is adjust the hex values from <tt>06 91</tt>, which specifies an image height of 1681 px, to <tt>09 90</tt>, 2448 px, making the image 3264 x 2448, a standard 4:3 ratio coming from an iPhone.  This makes the CRC check valid again and viewing the image is full sized and contains the key.
+Breaking down the chunk data we have...
+
+	00 00 0C C0 = Width
+	00 00 06 91 = Height
+	08 = Bit depth
+	06 = Color type
+	00 = Compression method
+	00 = Filter method
+	00 = Interlace method
+
+We want to tweak the height so all we have to do is adjust the hex values from <tt>00 00 06 91</tt>, which specifies an image height of 1681 px, to <tt>00 00 09 90</tt>, 2448 px, making the image 3264 x 2448, a standard 4:3 ratio coming from an iPhone.  This makes the CRC check valid again and viewing the image is full sized and contains the key.
