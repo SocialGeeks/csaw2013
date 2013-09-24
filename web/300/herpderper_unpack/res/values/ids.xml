@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="login_status">false</item>
+    <item type="id" name="login_status_message">false</item>
+    <item type="id" name="login_form">false</item>
+    <item type="id" name="email">false</item>
+    <item type="id" name="password">false</item>
+    <item type="id" name="login">false</item>
+    <item type="id" name="sign_in_button">false</item>
+    <item type="id" name="status_msg">false</item>
+    <item type="id" name="msg_msg">false</item>
+    <item type="id" name="action_forgot_password">false</item>
+</resources>
